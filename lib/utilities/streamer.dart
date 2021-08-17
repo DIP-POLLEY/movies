@@ -26,7 +26,8 @@ class _CardStreamState extends State<CardStream> {
 
                 return MovieCard(
                 nam: value.movnam,
-
+                dict: value.dictnam,
+                  img: value.movimg,
                 );
               },
               separatorBuilder: (_,index)=> Divider(),

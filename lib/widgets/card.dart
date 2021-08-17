@@ -1,22 +1,45 @@
+import 'dart:io';
+import 'dart:convert';
+import 'dart:typed_data' show Uint8List;
+
 import 'package:flutter/material.dart';
+import 'package:movies/main.dart';
 import 'package:movies/utilities/user_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movies/widgets/RoundButton.dart';
+import 'package:movies/screens/homepage.dart';
+import 'package:path_provider/path_provider.dart';
 
 
 class MovieCard extends StatefulWidget {
   // const MovieCard({Key? key}) : super(key: key);
-  MovieCard ({this.nam,this.dict});
-  final String nam,dict;
+  MovieCard ({this.nam,this.dict,this.img});
+  final String nam,dict,img;
   @override
   _MovieCardState createState() => _MovieCardState();
 }
 
 class _MovieCardState extends State<MovieCard> {
-  String _nam,_dict;
+  String _nam,_dict,_img;
+  File _image;
+  void converttoImage() async
+  {
+    Uint8List decodedBytes = base64Decode(_img);
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    File fl = File("$dir/"+DateTime.now().millisecondsSinceEpoch.toString()+"jpg");
+    await fl.writeAsBytesSync(decodedBytes);
+
+    setState(() {
+      _image = fl;
+      print("Now Done");
+    });
+  }
   void initState(){
     super.initState();
     _nam = widget.nam;
+    _dict = widget.dict;
+    _img = widget.img;
+    converttoImage();
   }
 
   @override
@@ -30,7 +53,7 @@ class _MovieCardState extends State<MovieCard> {
           children: <Widget>[
             Expanded(
               flex: 2,
-              child: Container(
+              child: _image==null?Container(
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
@@ -40,6 +63,12 @@ class _MovieCardState extends State<MovieCard> {
                       fit:BoxFit.fill,
                     )
                 ),
+              ):
+              Image.file(
+                _image,
+                width: 50,
+                height: 50,
+                fit: BoxFit.fitHeight,
               ),
             ),
             Expanded(
@@ -53,20 +82,28 @@ class _MovieCardState extends State<MovieCard> {
                       Text(
                         _nam,
                       ),
+                      Text(
+                        _dict,
+                      ),
                       Row(
                         children: [
                           Expanded(
                             flex: 1,
                             child: RoundButton(
                               icn: FontAwesomeIcons.share,//delete
-                              tap: (){},
+                              tap: (){
+                                box.delete(_nam);
+                                Navigator.pushReplacementNamed(context, HOMESCREEN.id);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: RoundButton(
                               icn: FontAwesomeIcons.pen,//edit
-                              tap: (){},
+                              tap: (){
+
+                              },
                             ),
                           ),
                         ],
@@ -94,3 +131,12 @@ class _MovieCardState extends State<MovieCard> {
     );
   }
 }
+
+
+
+// child: Image.file(
+// _image,
+// width: 50,
+// height: 50,
+// fit: BoxFit.fitHeight,
+// ),

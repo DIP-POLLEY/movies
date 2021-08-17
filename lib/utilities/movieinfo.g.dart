@@ -19,7 +19,7 @@ class MovieInfoAdapter extends TypeAdapter<MovieInfo> {
     return MovieInfo(
       movnam: fields[0] as String,
       dictnam: fields[1] as String,
-      movimg: fields[2] as File,
+      movimg: fields[2] as String,
     );
   }
 

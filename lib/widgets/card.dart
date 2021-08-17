@@ -6,12 +6,19 @@ import 'package:movies/widgets/RoundButton.dart';
 
 class MovieCard extends StatefulWidget {
   // const MovieCard({Key? key}) : super(key: key);
-
+  MovieCard ({this.nam,this.dict});
+  final String nam,dict;
   @override
   _MovieCardState createState() => _MovieCardState();
 }
 
 class _MovieCardState extends State<MovieCard> {
+  String _nam,_dict;
+  void initState(){
+    super.initState();
+    _nam = widget.nam;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -44,7 +51,7 @@ class _MovieCardState extends State<MovieCard> {
                   child: Column(
                     children: [
                       Text(
-                        "Kabhi Khushi Kabhi Gham na juda honge hum kabhi khusi kabhi gaam",
+                        _nam,
                       ),
                       Row(
                         children: [

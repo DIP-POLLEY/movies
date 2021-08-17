@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movies/widgets/RoundButton.dart';
-import 'package:movies/widgets/card.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:movies/widgets/RoundButton.dart';
+// import 'package:movies/widgets/card.dart';
 import 'package:movies/widgets/commonAppbar.dart';
 import 'package:movies/screens/addmovie.dart';
-
+import 'package:movies/utilities/streamer.dart';
 
 class HOMESCREEN extends StatefulWidget {
   // const HOMESCREEN({Key? key}) : super(key: key);
@@ -22,28 +22,46 @@ class _HOMESCREENState extends State<HOMESCREEN> {
         preferredSize: const Size.fromHeight(50),
         child: CommonAppBar(),
       ),
-      body: ListView(
-        children: <Widget>[
-          MovieCard(),
-          RoundButton(
-            icn: FontAwesomeIcons.share,
-            tap: (){},
-          ),
-          RoundButton(
-            icn: FontAwesomeIcons.pen,
-            tap: (){},
+      // body: ListView(
+      //   children: <Widget>[
+      //     // MovieCard(),
+      //     CardStream(),
+      //     RoundButton(
+      //       icn: FontAwesomeIcons.share,
+      //       tap: (){},
+      //     ),
+      //     RoundButton(
+      //       icn: FontAwesomeIcons.pen,
+      //       tap: (){},
+      //     ),
+      //     FloatingActionButton(
+      //       autofocus: true,
+      //       onPressed: (){
+      //         Navigator.pushNamed((context), AddMovie.id);
+      //       },
+      //       child: Icon(
+      //         Icons.add,
+      //         color: Colors.white,
+      //       ),
+      //     )
+      //
+      //   ],
+      // ),
+      body: Column(
+        children: [
+          Expanded(
+              child: CardStream()
           ),
           FloatingActionButton(
-            autofocus: true,
-            onPressed: (){
-              Navigator.pushNamed((context), AddMovie.id);
-            },
-            child: Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-          )
-
+          autofocus: true,
+          onPressed: (){
+            Navigator.pushNamed((context), AddMovie.id);
+          },
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        )
         ],
       ),
     );

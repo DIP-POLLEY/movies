@@ -1,15 +1,21 @@
 import 'dart:io';
+import 'dart:convert' show base64Encode;
+import 'dart:typed_data' show Uint8List;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hive/hive.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movies/screens/homepage.dart';
+// import 'package:movies/utilities/boxes.dart';
 import 'package:movies/utilities/constants.dart';
 import 'package:movies/utilities/movieinfo.dart';
 import 'package:movies/widgets/RoundButton.dart';
 import 'package:movies/widgets/commonAppbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:movies/widgets/button.dart';
+import 'package:movies/main.dart';
+
 
 class AddMovie extends StatefulWidget {
   // const AddMovie({Key? key}) : super(key: key);
@@ -21,8 +27,29 @@ File _image;
 class _AddMovieState extends State<AddMovie> {
 
 
-  Box<MovieInfo> mycart;
   String s1,s2;
+  final List<MovieInfo> mycart = [];
+
+
+  // Future addmovie  ()async
+  // {
+  //   final movinfo = MovieInfo()
+  //   ..movnam = s1
+  //   ..dictnam = s2
+  //   ..movimg = _image;
+  //   print(movinfo);
+  //   final box = Boxes.getMovieInfo();
+  //   box.add(movinfo);
+  //   // print(_image);
+  //
+  //   // setState(() {
+  //   //
+  //   //   mycart.add(movinfo);
+  //   // });
+  // }
+
+
+
 
   Future _imgFromCamera() async {
     PickedFile image = await ImagePicker().getImage(
@@ -54,11 +81,12 @@ class _AddMovieState extends State<AddMovie> {
     });
 
   }
+
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    mycart = Hive.box<MovieInfo>("cart");
   }
 
   @override
@@ -163,14 +191,22 @@ class _AddMovieState extends State<AddMovie> {
             child: Button(
               ttl: 'Submit',
               clr: Colors.redAccent,
-              onpres: () async{
+              onpres: () async {
+
+                Uint8List bytesImg = _image.readAsBytesSync();
+                String base64EncodeImg = base64Encode(bytesImg);
                 var movie = MovieInfo(
                   movnam: s1,
                   dictnam: s2,
-                  movimg: _image
+                  movimg: base64EncodeImg
                 );
-                await mycart.put(s1, movie);
-                //print(mycart.get(s1));
+                await box.put(s1,movie);
+                print(box.get(s1).movnam);
+
+                // Navigator.popUntil(context,
+                // ModalRoute.withName(HOMESCREEN.id)
+                // );
+                Navigator.pushReplacementNamed(context, HOMESCREEN.id);
               },
             ),
           ),

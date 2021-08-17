@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:hive/hive.dart';
 
 part 'movieinfo.g.dart';
@@ -15,7 +14,7 @@ class MovieInfo extends HiveObject{
   String dictnam;
 
   @HiveField(2)
-  File movimg;
+  String movimg;
 
 
 }

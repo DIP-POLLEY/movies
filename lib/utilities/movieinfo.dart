@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:hive/hive.dart';
 
-// part 'movie.info.g.dart';
+part 'movieinfo.g.dart';
 
-@HiveType(typeId: 1)
-class MovieInfo{
+@HiveType(typeId: 0)
+class MovieInfo extends HiveObject{
 
   MovieInfo({this.movnam, this.dictnam, this.movimg});
 

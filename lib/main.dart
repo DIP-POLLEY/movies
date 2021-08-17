@@ -6,15 +6,20 @@ import 'package:movies/screens/homepage.dart';
 import 'package:movies/screens/login.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:movies/utilities/movieinfo.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+
+// part 'main.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Directory document = await getApplicationDocumentsDirectory();
-  Hive
-    ..init(document.path);
-    //..registerAdapter(TypeAdapter<MovieInfo()>());
-  await Hive.openBox<MovieInfo>("cart");
+  // Directory document = await getApplicationDocumentsDirectory();
+  // Hive
+  //   ..init(document.path);
+  //   //..registerAdapter(TypeAdapter<MovieInfo()>());
+  // await Hive.openBox<MovieInfo>("cart");
+  await Hive.initFlutter();
+  Hive.registerAdapter(MovieInfoAdapter());
   runApp(MyApp());
 }
 

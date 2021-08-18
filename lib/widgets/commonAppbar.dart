@@ -14,7 +14,7 @@ class _CommonAppBarState extends State<CommonAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xff002638),
-      // automaticallyImplyLeading: false,
+      automaticallyImplyLeading: false,
       title: Text('Movies'),
       centerTitle: true,
       actions: [

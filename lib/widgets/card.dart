@@ -77,7 +77,7 @@ class _MovieCardState extends State<MovieCard> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 3),
                 child: Container(
-                  color: Colors.green,
+                  // color: Colors.green,
                   child: Column(
                     children: [
                       Text(

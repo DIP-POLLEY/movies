@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:movies/widgets/card.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+
 class CardStream extends StatefulWidget {
   // const CardStream({Key? key}) : super(key: key);
 

@@ -31,7 +31,9 @@ class _CardStreamState extends State<CardStream> {
                   img: value.movimg,
                 );
               },
-              separatorBuilder: (_,index)=> Divider(),
+              separatorBuilder: (_,index)=> Divider(
+                height: 0,
+              ),
               itemCount: bx.keys.toList().length,
           );
         }

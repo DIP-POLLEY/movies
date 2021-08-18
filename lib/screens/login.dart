@@ -57,8 +57,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: 20,
             ),
             Button(
-              ttl: 'GOOGLE',
-              clr: Colors.redAccent,
+              ttl: 'GOOGLE SIGN-IN',
+              clr: Color(0xff005aa7),
               onpres: (){
                 signInWithGoogle().then((onValue){
                   Navigator.pushReplacementNamed(context, HOMESCREEN.id);

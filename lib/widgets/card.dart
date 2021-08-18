@@ -5,6 +5,7 @@ import 'dart:typed_data' show Uint8List;
 import 'package:flutter/material.dart';
 import 'package:movies/main.dart';
 import 'package:movies/screens/update.dart';
+import 'package:movies/utilities/constants.dart';
 import 'package:movies/utilities/user_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movies/widgets/RoundButton.dart';
@@ -81,43 +82,57 @@ class _MovieCardState extends State<MovieCard> {
                   child: Column(
                     children: [
                       Text(
-                        _nam,
+                        "$_nam",
+                        style: kCardString,
+                      ),
+                      Text(
+                        "by",
+                        style: kCardString.copyWith(
+                          fontSize: 10,
+                        ),
                       ),
                       Text(
                         _dict,
+                        style: kCardString.copyWith(
+                          fontSize: 15,
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: RoundButton(
-                              icn: FontAwesomeIcons.share,//delete
-                              tap: (){
-                                box.delete(_nam);
-                                Navigator.pushReplacementNamed(context, HOMESCREEN.id);
-                              },
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: RoundButton(
+                                icn: FontAwesomeIcons.trash,//delete
+                                tap: (){
+                                  box.delete(_nam);
+                                  Navigator.pushReplacementNamed(context, HOMESCREEN.id);
+                                },
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: RoundButton(
-                              icn: FontAwesomeIcons.pen,//edit
-                              tap: (){
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => UpdateMovie(
-                                          nam: _nam,
-                                          dic: _dict,
-                                          img64: _img,
-                                          imgn64: _image,
-                                        )
-                                    ),
-                                );
-                              },
+                            Expanded(
+                              flex: 1,
+                              child: RoundButton(
+                                icn: FontAwesomeIcons.pen,//edit
+                                tap: (){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => UpdateMovie(
+                                            nam: _nam,
+                                            dic: _dict,
+                                            img64: _img,
+                                            imgn64: _image,
+                                          )
+                                      ),
+                                  );
+                                },
+                              ),
                             ),
-                          ),
-                        ],
+
+                          ],
+                        ),
                       ),
                     ],
                   ),

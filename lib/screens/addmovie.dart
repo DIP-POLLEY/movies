@@ -87,6 +87,8 @@ class _AddMovieState extends State<AddMovie> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _image=null;
+
   }
 
   @override

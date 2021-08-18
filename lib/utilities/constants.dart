@@ -21,14 +21,15 @@ const kBoxfield = InputDecoration(
 const kStringStyles = TextStyle(
   fontSize: 10,
   fontWeight: FontWeight.bold,
-  color: Colors.blueAccent,
+  color: Colors.white,
 
 );
 
 const kCardString = TextStyle(
   fontSize: 25,
   fontWeight: FontWeight.bold,
-  color: Color(0xff758085),
+  // color: Color(0xff758085),
+  color: Colors.white,
 );
 
 const kAlertText = TextStyle(

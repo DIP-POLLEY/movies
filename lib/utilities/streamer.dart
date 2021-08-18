@@ -21,7 +21,11 @@ class _CardStreamState extends State<CardStream> {
 
               itemBuilder: (context,index){
                 final key = bx.keys.toList()[index];
-                // final len = bx.keys.toList().length;
+                final len = bx.keys.toList().length;
+                if(len == 0)
+                  return Text(
+                    "No movies in the list",
+                  );
                 // print(len);
                 final value = bx.get(key);
 

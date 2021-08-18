@@ -31,7 +31,7 @@ class _HOMESCREENState extends State<HOMESCREEN> {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.topLeft,
-          colors: [Color(0xffebf9ff),Color(0xffbdeaff)]
+          colors: [Color(0xffdef5ff),Color(0xff96deff)]
         ),
       ),
       child: Scaffold(

@@ -29,7 +29,7 @@ class _MovieCardState extends State<MovieCard> {
     Uint8List decodedBytes = base64Decode(_img);
     String dir = (await getApplicationDocumentsDirectory()).path;
     File fl = File("$dir/"+DateTime.now().millisecondsSinceEpoch.toString()+"jpg");
-    await fl.writeAsBytesSync(decodedBytes);
+     fl.writeAsBytesSync(decodedBytes);
 
     setState(() {
       _image = fl;
@@ -49,8 +49,8 @@ class _MovieCardState extends State<MovieCard> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 30),
       child: Container(
-
         // height: 100,
+
         child: Row(
           children: <Widget>[
             Expanded(
@@ -66,11 +66,17 @@ class _MovieCardState extends State<MovieCard> {
                     )
                 ),
               ):
-              Image.file(
-                _image,
-                width: 50,
-                height: 50,
-                fit: BoxFit.fitHeight,
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.file(
+                    _image,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
               ),
             ),
             Expanded(
@@ -80,6 +86,8 @@ class _MovieCardState extends State<MovieCard> {
                 child: Container(
                   // color: Colors.green,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         "$_nam",
@@ -116,6 +124,7 @@ class _MovieCardState extends State<MovieCard> {
                               child: RoundButton(
                                 icn: FontAwesomeIcons.pen,//edit
                                 tap: (){
+                                  Navigator.of(context).pop();
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -150,6 +159,9 @@ class _MovieCardState extends State<MovieCard> {
               blurRadius: 4,
             )
           ],
+          gradient: LinearGradient(
+              colors: [Color(0xff3494e6),Color(0xffec6ead)]
+          ),
 
         ),
 

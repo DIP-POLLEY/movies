@@ -13,8 +13,8 @@ class _CommonAppBarState extends State<CommonAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xff7ecdf2),
-      automaticallyImplyLeading: false,
+      backgroundColor: Color(0xff002638),
+      // automaticallyImplyLeading: false,
       title: Text('Movies'),
       centerTitle: true,
       actions: [
@@ -22,8 +22,9 @@ class _CommonAppBarState extends State<CommonAppBar> {
 
             icon: Icon(Icons.add),
             onPressed: (){
+              Navigator.of(context).pop();
 
-              Navigator.pushReplacementNamed((context), AddMovie.id);
+              Navigator.pushNamed((context), AddMovie.id);
             }
         )
       ],

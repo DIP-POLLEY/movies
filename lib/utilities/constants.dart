@@ -28,8 +28,8 @@ const kStringStyles = TextStyle(
 const kCardString = TextStyle(
   fontSize: 25,
   fontWeight: FontWeight.bold,
-  // color: Color(0xff758085),
-  color: Colors.white,
+  color: Color(0xff758085),
+  // color: Colors.white,
 );
 
 const kAlertText = TextStyle(

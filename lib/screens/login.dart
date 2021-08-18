@@ -71,7 +71,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 onpres: (){
                   toggleSpinner();
                   signInWithGoogle().then((onValue){
-                    Navigator.pushReplacementNamed(context, HOMESCREEN.id);
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, HOMESCREEN.id);
                     toggleSpinner();
                   }).catchError((e){
                     print(e);

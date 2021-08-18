@@ -23,7 +23,6 @@ class _HOMESCREENState extends State<HOMESCREEN> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +30,7 @@ class _HOMESCREENState extends State<HOMESCREEN> {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.topLeft,
-          colors: [Color(0xffdef5ff),Color(0xff96deff)]
+          colors: [Color(0xff00c6ff),Color(0xff0072ff)]
         ),
       ),
       child: Scaffold(
@@ -40,31 +39,7 @@ class _HOMESCREENState extends State<HOMESCREEN> {
           preferredSize: const Size.fromHeight(50),
           child: CommonAppBar(),
         ),
-        // body: ListView(
-        //   children: <Widget>[
-        //     // MovieCard(),
-        //     CardStream(),
-        //     RoundButton(
-        //       icn: FontAwesomeIcons.share,
-        //       tap: (){},
-        //     ),
-        //     RoundButton(
-        //       icn: FontAwesomeIcons.pen,
-        //       tap: (){},
-        //     ),
-        //     FloatingActionButton(
-        //       autofocus: true,
-        //       onPressed: (){
-        //         Navigator.pushNamed((context), AddMovie.id);
-        //       },
-        //       child: Icon(
-        //         Icons.add,
-        //         color: Colors.white,
-        //       ),
-        //     )
-        //
-        //   ],
-        // ),
+
         body: Column(
           children: [
             Expanded(
@@ -77,8 +52,8 @@ class _HOMESCREENState extends State<HOMESCREEN> {
                       GestureDetector(
                         child: Container(
 
-                          width: 60,
-                          height: 60,
+                          width: MediaQuery.of(context).orientation == Orientation.portrait?60:0,
+                          height: MediaQuery.of(context).orientation == Orientation.portrait?60:0,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(

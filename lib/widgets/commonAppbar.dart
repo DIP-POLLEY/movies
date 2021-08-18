@@ -13,7 +13,7 @@ class _CommonAppBarState extends State<CommonAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xff002638),
+      backgroundColor: Color(0xff7ecdf2),
       automaticallyImplyLeading: false,
       title: Text('Movies'),
       centerTitle: true,

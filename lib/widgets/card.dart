@@ -68,13 +68,17 @@ class _MovieCardState extends State<MovieCard> {
               ):
               Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.file(
-                    _image,
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.fitHeight,
+                child: CircleAvatar(
+                  radius: 55,
+                  backgroundColor: Colors.black12,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.file(
+                      _image,
+                      width: 100,
+                      height: 95,
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
               ),
@@ -159,9 +163,9 @@ class _MovieCardState extends State<MovieCard> {
               blurRadius: 4,
             )
           ],
-          gradient: LinearGradient(
-              colors: [Color(0xff3494e6),Color(0xffec6ead)]
-          ),
+          // gradient: LinearGradient(
+          //     colors: [Color(0xff3494e6),Color(0xffec6ead)]
+          // ),
 
         ),
 

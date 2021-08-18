@@ -4,6 +4,7 @@ import 'dart:typed_data' show Uint8List;
 
 import 'package:flutter/material.dart';
 import 'package:movies/main.dart';
+import 'package:movies/screens/update.dart';
 import 'package:movies/utilities/user_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movies/widgets/RoundButton.dart';
@@ -102,7 +103,17 @@ class _MovieCardState extends State<MovieCard> {
                             child: RoundButton(
                               icn: FontAwesomeIcons.pen,//edit
                               tap: (){
-
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UpdateMovie(
+                                          nam: _nam,
+                                          dic: _dict,
+                                          img64: _img,
+                                          imgn64: _image,
+                                        )
+                                    ),
+                                );
                               },
                             ),
                           ),

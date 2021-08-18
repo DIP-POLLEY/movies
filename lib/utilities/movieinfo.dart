@@ -7,6 +7,7 @@ class MovieInfo extends HiveObject{
 
   MovieInfo({this.movnam, this.dictnam, this.movimg});
 
+
   @HiveField(0)
   String movnam;
 
